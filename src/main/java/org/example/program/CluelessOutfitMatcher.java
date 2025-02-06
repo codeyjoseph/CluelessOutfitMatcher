@@ -9,12 +9,13 @@ public class CluelessOutfitMatcher {
     private final ImageData[] tops;
     private final ImageData[] bottoms;
     private final OutfitLogic outfitLogic;
+
     public CluelessOutfitMatcher(Properties topProperties, Properties bottomProperties) {
         tops = getImageData(topProperties);
         bottoms = getImageData(bottomProperties);
-        String criteria = topProperties.getProperty("criteria");
-        Map criteriaMap = parseCriteria(criteria);
-        outfitLogic = new OutfitLogic(criteriaMap);
+        String criteriaString = topProperties.getProperty("criteria");
+        Map<String, ArrayList<String>> criteria = parseCriteria(criteriaString);
+        outfitLogic = new OutfitLogic(criteria);
     }
     private ImageData[] getImageData(Properties properties) {
         String[] filepaths = properties.getProperty("images").split(";");
@@ -29,7 +30,7 @@ public class CluelessOutfitMatcher {
         return imageData;
     }
 
-    private Map parseCriteria(String criteria) {
+    private Map<String, ArrayList<String>> parseCriteria(String criteria) {
         Map<String, ArrayList<String>> criteriaMap = new HashMap<>();
         String[] criteriaPairs = criteria.split(";");
         for (String pair : criteriaPairs) {
@@ -42,9 +43,7 @@ public class CluelessOutfitMatcher {
     }
 
     public Boolean dressMe(int top, int bottom) {
-        final ImageData topToMatch = tops[top];
-        final ImageData bottomToMatch = bottoms[bottom];
-        return true;
+        return outfitLogic.testOutfit(tops[top], bottoms[bottom]);
     }
 
     @Override

@@ -1,13 +1,20 @@
 package org.example.service;
 
+import org.example.model.ImageData;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Map;
 
 public class OutfitLogic {
-    public Map criteriaMap;
+    public Map<String, ArrayList<String>> criteriaMap;
 
-    public OutfitLogic(Map criteriaMap) {
+    public OutfitLogic(Map<String, ArrayList<String>> criteriaMap) {
         this.criteriaMap = criteriaMap;
+    }
+
+    public boolean testOutfit(ImageData top, ImageData bottom) {
+        return criteriaMap.get(top.getGenre()).contains(bottom.getGenre());
     }
 
     @Override

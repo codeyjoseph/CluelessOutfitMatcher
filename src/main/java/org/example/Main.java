@@ -14,6 +14,11 @@ public class Main {
         }
         CluelessOutfitMatcher matcher = new CluelessOutfitMatcher(topProperties, bottomProperties);
         System.out.println(matcher);
+        boolean verdict = matcher.dressMe(0, 0);
+        if (verdict)
+            System.out.println("It's a match");
+        else
+            System.out.println("X NO MATCH X");
     }
 
     public static Properties readProperties(String filepath) {
