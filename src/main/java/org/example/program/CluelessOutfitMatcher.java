@@ -59,4 +59,16 @@ public class CluelessOutfitMatcher {
         }
         return message;
     }
+
+    public ImageData[] getTops() {
+        return tops;
+    }
+    
+    public ImageData[] getBottoms() {
+        return bottoms;
+    }
+
+    public OutfitLogic getOutfitLogic() {
+        return outfitLogic;
+    }
 }

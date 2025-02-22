@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.gui.Program;
 import org.example.program.CluelessOutfitMatcher;
 
 import java.io.FileInputStream;
@@ -7,8 +8,8 @@ import java.util.Properties;
 
 public class Main {
     public static void main(String[] args) {
-        Properties topProperties = readProperties("src/main/resources/tops.properties");
-        Properties bottomProperties = readProperties("src/main/resources/bottoms.properties");
+        Properties topProperties = readProperties("src/main/resources/topcat.properties");
+        Properties bottomProperties = readProperties("src/main/resources/bottomcat.properties");
         if (topProperties == null || bottomProperties == null) {
             return ;
         }
@@ -19,6 +20,8 @@ public class Main {
             System.out.println("It's a match");
         else
             System.out.println("X NO MATCH X");
+        Program prog = new Program(matcher);
+        prog.run();
     }
 
     public static Properties readProperties(String filepath) {

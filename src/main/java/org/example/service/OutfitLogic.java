@@ -2,7 +2,6 @@ package org.example.service;
 
 import org.example.model.ImageData;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Map;
 
